@@ -2,11 +2,15 @@
 #include <vector>
 #include <glaze/glaze.hpp>
 #include <unordered_set>
+#include <random>
 #pragma once
 static int GenerateNumber(int min, int max) {
     return rand() % (max - min + 1) + min;
 }
-
+static int GenerateNumberWithRNG(int min, int max, std::mt19937& rng) {
+    std::uniform_int_distribution<int> dist(min, max);
+    return dist(rng);
+}
 static bool ChanceGenerate(int percentage) {
     int number = GenerateNumber(0, 100);
     return number < percentage;
@@ -100,11 +104,11 @@ public:
         }
 
     }
-    Point* getRandomPoint(bool collision, std::unordered_set<std::string>& PointsonGridTaken) {
+    Point* getRandomPoint(bool collision, std::unordered_set<std::string>& PointsonGridTaken, std::mt19937& rng) {
         size_t maxretry = this->points.size();
         while (maxretry > 0) {
-            int x = GenerateNumber(0, this->width - 1);
-            int y = GenerateNumber(0, this->height - 1);
+            int x = GenerateNumberWithRNG(0, this->width - 1,rng);
+            int y = GenerateNumberWithRNG(0, this->height - 1,rng);
             Point& point = this->getPoint(x, y);
             if (point.collision == false) {
                 std::string pointtostring = point.toString();

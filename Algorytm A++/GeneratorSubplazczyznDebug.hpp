@@ -7,4 +7,6 @@ struct PairHash {
 	}
 };
 int MakeBadData(Graph& graph);
-Graph MakeGraph(int sizemap = 10, int maxconnonmaps = 5, int minx = 0, int maxx = 100, int miny = 0, int maxy = 100, int chanceofcoll = 20);
+Graph MakeFixedGraph(int sizemap,int connectsmap,int minx,int maxx,int miny,int maxy, int chanceofcoll,std::mt19937& rng);
+
+Graph MakeGraph(int sizemap, int minconnonmaps, int maxconnonmaps, int minx, int maxx, int miny, int maxy, int chanceofcoll,std::mt19937& rng);

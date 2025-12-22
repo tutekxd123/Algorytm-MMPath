@@ -1,0 +1,8 @@
+x64-windows/
+x64-windows/include/
+x64-windows/include/ctpl_stl.h
+x64-windows/share/
+x64-windows/share/vit-vit-ctpl/
+x64-windows/share/vit-vit-ctpl/copyright
+x64-windows/share/vit-vit-ctpl/vcpkg.spdx.json
+x64-windows/share/vit-vit-ctpl/vcpkg_abi_info.txt

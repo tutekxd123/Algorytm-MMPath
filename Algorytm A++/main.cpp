@@ -19,8 +19,10 @@ int main()
 	//testsUnit::testBenchmark();
 
 #endif // DEBUG
-	std::vector<int> test = { 1,2,3,4,5 };
-	reverse(test.begin(), test.end());
+	//std::vector<int> test = { 1,2,3,4,5 };
+	//reverse(test.begin(), test.end());
+	//testsUnit::testBenchmark(); //przykladowy po wygenerenowaniu grafu z innego programu
+
 	testsUnit::testBenchmarkMultiple();
 
 	return 0;

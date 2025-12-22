@@ -36,12 +36,12 @@ std::vector<Point> AstarPlusPlus::ReconstructPath(const Graph& graph, AstarPlusP
 	this->lengthoperations += 3;
 	while (currentNode->parent != nullptr) {
 		Grupy.emplace_back(currentNode->grid->id);
-		std::cout << "Dodaje grupe: " << currentNode->grid->id << "\n";
+		//std::cout << "Dodaje grupe: " << currentNode->grid->id << "\n";
 		currentNode = currentNode->parent;
 	}
 	Grupy.emplace_back(currentNode->grid->id);
-	std::cout << currentNode->grid->id<<std::endl;
-	std::cout << "END" << std::endl;
+	//std::cout << currentNode->grid->id<<std::endl;
+	//std::cout << "END" << std::endl;
 	Utility::reverse(&Grupy[0], &Grupy[0] + Grupy.size());
 	Point CurrentPoint = currentNode->point; //startNode
 	for (int i = 0; i < Grupy.size()-1; i++) {

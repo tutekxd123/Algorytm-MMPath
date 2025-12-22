@@ -1033,3 +1033,12 @@ Multi-Arch: same
 Abi: 66418c7324a13d79ad6e80ad52a708d900d8482a9bf455ef1b65afefa0402bab
 Status: purge ok not-installed
 
+Package: vit-vit-ctpl
+Version: 0.0.2
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 127630a6a5e73da0b16bdfe7fd43e74aedffaaab55fe82fa3ba742680b9397df
+Description: Modern and efficient C++ Thread Pool Library
+Status: install ok installed
+

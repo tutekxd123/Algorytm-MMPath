@@ -5,6 +5,8 @@
 #include "A++.hpp"
 #include "GeneratorSubplazczyznDebug.hpp"
 #include <future>
+#include <ctpl_stl.h>
+#include <random>
 struct benchmark {
 	int edges;
 	size_t lengthoperations;
