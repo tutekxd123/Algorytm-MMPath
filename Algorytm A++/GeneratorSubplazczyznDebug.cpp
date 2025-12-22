@@ -38,23 +38,22 @@ Graph MakeFixedGraph(int sizemap, int connectsmap, int minx, int maxx, int miny,
 		tempgrid.GenerateNewGrid(minx, maxx, miny, maxy, chanceofcoll);
 		newgraph.Grids.emplace_back(tempgrid);
 	}
-	std::unordered_set<std::pair<int, int>, PairHash> AlreadyEdges;
 	std::unordered_map<int, std::unordered_set<std::string>> PointsonGridTaken; //Punkty na mapie ktore maja krawedz
 	//Metoda na sztywno lacze mapy z nastepnymi
 	for (int i = 0; i < sizemap; i++)
 	{
-		for(int j=i;j<i+connectsmap&&j<sizemap;j++)
+		for(int d=1;d<=std::ceil(connectsmap/2);d++)
 		{
+			if (connectsmap % 2 == 1) {
+				if (sizemap % 2 != 0) {
+					throw std::runtime_error("Dla nieparzystego stopnia liczba wêz³ów musi byæ parzysta zeby by³a regularnosc");
+				}
+			}
+			int j = (i + d) % sizemap; //Laczymy z nastepnymi mapami
 			if(j==i) continue;
 			//Sprawdzmy czy mamy takie polaczenie O(1) bo to jest SET
 			std::pair<int, int> EdgeCheck1 = std::make_pair(i, j);
 			std::pair<int, int> EdgeCheck2 = std::make_pair(j, i);
-			//Duplikat bo trzeba byloby napisaæ wlasny komparator?
-			if (AlreadyEdges.contains(EdgeCheck1)) {
-				continue;
-			} //jezeli mamy taka krawedz to wywalamy
-			AlreadyEdges.insert(EdgeCheck1);
-			AlreadyEdges.insert(EdgeCheck2);
 			//Krawdzecie do setu dodane, tera Trzeba koordynaty wygenerowac z jednej i drugiej mapy ktore nie sa kolizja i nie s¹ tak¿e granicznym wezlem
 			Point* PointinGrid1 = newgraph.Grids[i].getRandomPoint(false, PointsonGridTaken[i],rng);
 			Point* PointinGrid2 = newgraph.Grids[j].getRandomPoint(false, PointsonGridTaken[j],rng);

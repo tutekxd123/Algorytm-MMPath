@@ -82,7 +82,7 @@ void testsUnit::testBenchmarkMultiple() {
 			// MakeGraph(int sizemap, int minconnonmaps, int maxconnonmaps, int minx, int maxx, int miny, int maxy, int chanceofcoll,std::mt19937& rng);
 			//Graph benchmark = MakeGraph(1000, 1,(int)(std::log(maps) * 1.5),32, 32, 32, 32,0,rng);
 			//Graph benchmark = MakeGraph(1000, 5,6, 32, 32, 32, 32, 0,rng); //tak jak tutaj //Bez kolizji!!
-			Graph benchmark = MakeFixedGraph(maps, 3, 32, 32, 32, 32, 0, rng); //Tak jak tutaj //Bez kolizji!
+			Graph benchmark = MakeFixedGraph(maps, 4, 32, 32, 32, 32, 0, rng); //Tak jak tutaj //Bez kolizji!
 			size_t sizeofEdges = 0;
 			for (auto& grid : benchmark.Grids) {
 				sizeofEdges += grid.Edges.size();
