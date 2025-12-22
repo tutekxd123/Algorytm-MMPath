@@ -74,21 +74,20 @@ void testsUnit::testBenchmarkMultiple() {
 	std::vector<benchmark> benchmarks;
 	ctpl::thread_pool pool(20);
 
-	for (int maps = 10; maps < 100; maps += 10) { //kiedys generowalem rozne rozmiary map w sensie grafu, lecz pod wykres pudelkowy lepiej miec stala mape
+	for (int maps = 10; maps < 100; maps += 1) { //kiedys generowalem rozne rozmiary map w sensie grafu, lecz pod wykres pudelkowy lepiej miec stala mape
 		pool.push([maps, &benchmarks](int id) {
 			//Zmiana stale mapy pod wykres 
 			//kwadratowe mapy
 			std::mt19937 rng(123456 + id);
 			// MakeGraph(int sizemap, int minconnonmaps, int maxconnonmaps, int minx, int maxx, int miny, int maxy, int chanceofcoll,std::mt19937& rng);
 			//Graph benchmark = MakeGraph(1000, 1,(int)(std::log(maps) * 1.5),32, 32, 32, 32,0,rng);
-			//Graph benchmark = MakeGraph(1000, 5,6, 32, 32, 32, 32, 0,rng); //tak jak tutaj //Bez kolizji!!
-			Graph benchmark = MakeFixedGraph(maps, 4, 32, 32, 32, 32, 0, rng); //Tak jak tutaj //Bez kolizji!
+			Graph benchmark = MakeFixedGraph(150, 5, 32, 32, 32, 32, 0, rng); //Tak jak tutaj //Bez kolizji!
 			size_t sizeofEdges = 0;
 			for (auto& grid : benchmark.Grids) {
 				sizeofEdges += grid.Edges.size();
 			}
 			//int badmap = MakeBadData(benchmark);
-			int map = GenerateNumber(1, benchmark.Grids.size() - 1);
+			int map = GenerateNumber(1, benchmark.Grids.size()/2);
 			//int selectmap = map == 0 ? 1 : 0;
 			auto bfs = AstarPlusPlus::GetAllPossibleBFS(benchmark);
 			const auto cache = AstarPlusPlus::GetAstarCache(benchmark);
