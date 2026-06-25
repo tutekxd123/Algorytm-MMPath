@@ -93,12 +93,6 @@ class AstarPlusPlus {
 public:
 	int lengthoperations = 0;
 	std::vector<Point> getWay(const Graph& graph, int GrupaWezlowCel, const Point& StartPoint, int GrupaWezlowStart);
-	std::vector<std::tuple<AstarPlusPlusNode*, size_t, Point>> getNeighbors( std::deque<AstarPlusPlusNode>&AllNodes,const AstarPlusPlusNode* currentNode, const Graph& graph);
+	std::vector<std::tuple<AstarPlusPlusNode*, size_t, Point>> getNeighbors( std::vector<AstarPlusPlusNode>&AllNodes,const AstarPlusPlusNode* currentNode, const Graph& graph);
 	std::vector<Point> ReconstructPath(const Graph& graph, AstarPlusPlusNode* currentNode);
-	static std::unordered_map<std::pair<int, int>, size_t,PairHasher> GetAllPossibleBFS(const Graph& graph); //For Heuristic
-	static std::unordered_map<std::tuple<int, Point, Point>, size_t, TupleHasher> GetAstarCache(const Graph& graph); //For Cache
-	static size_t getDistanceBfs(int map1, int map2, const Graph& graph);
-	std::vector<Point> getWayOptimized(const Graph& graph, int GrupaWezlowCel, const Point& StartPoint, int GrupaWezlowStart, const std::unordered_map<std::pair<int, int>, size_t, PairHasher>& bfsDistances, const std::unordered_map<std::tuple<int, Point, Point>, size_t, TupleHasher>& astarCache);
-	double getHeuristic(int map1, int map2, const std::unordered_map<std::pair<int, int>, size_t, PairHasher>& bfsDistances, const int constnumber);
-	std::vector<std::tuple<AstarPlusPlusNode*, size_t, Point>> getNeighborsOptimized(std::vector<AstarPlusPlusNode>& AllNodes, const AstarPlusPlusNode* currentNode, const Graph& graph, const std::unordered_map<std::tuple<int, Point, Point>, size_t, TupleHasher>& astarCache);
 };
